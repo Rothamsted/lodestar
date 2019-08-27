@@ -80,8 +80,5 @@
         <property name="sparqlQueryResource" value="classpath:sparql-queries.txt" />
     </bean>
 
-
-
-
 </beans>
 
