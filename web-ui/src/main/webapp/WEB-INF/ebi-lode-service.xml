@@ -47,10 +47,10 @@
         <!--<property name="maxPoolSize" value="10"/>-->
     <!--</bean>-->
 
-     <!--For direct virtuoso JDBC connection, use this service-->
-    <!--<bean id="jenaVirtuosoExecutorService" class="uk.ac.ebi.fgpt.lode.impl.JenaVirtuosoExecutorService">-->
-        <!--<property name="endpointURL" value="jdbc:virtuoso://${lode.sparqlendpoint.url}:${lode.sparqlendpoint.port}" />-->
-    <!--</bean>-->
+    <!--For direct virtuoso JDBC connection, use this service-->
+    <bean id="jenaVirtuosoExecutorService" class="uk.ac.ebi.fgpt.lode.impl.JenaVirtuosoExecutorService">
+    	<property name="endpointURL" value="${lode.sparqlendpoint.url}" />
+    </bean>
 
 
     <!--
