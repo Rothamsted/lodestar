@@ -14,22 +14,20 @@ var activateQueryHistory=false;
 
 var exampleQueries = [
     {
-        category: "DBpedia example",
+        category: "Knetminer Examples",
         queries:[
             {
                 shortname : "Example Query 1",
-                description: "People who were born in Berlin before 1900",
+                description: "Select a Knetminer Protein",
                 namedgraph: "",
-                query: "PREFIX : <http://dbpedia.org/resource/>\n" +
-                "PREFIX dbo: <http://dbpedia.org/ontology/>\n\n" +
-                "SELECT ?name ?birth ?death ?person WHERE {\n" +
-                "?person dbo:birthPlace :Berlin .\n" +
-                "?person dbo:birthDate ?birth .\n" +
-                "?person foaf:name ?name .\n" +
-                "?person dbo:deathDate ?death .\n" +
-                "FILTER (?birth < \"1900-01-01\"^^xsd:date) . \n" +
-                "}   \n" +
-                "ORDER BY ?name"
+                query: "SELECT ?prot ?name ?description\n" + 
+                		"{\n" + 
+                		"  ?prot a bk:Protein.\n" + 
+                		"  \n" + 
+                		"  OPTIONAL { ?prot bk:prefName ?name }\n" + 
+                		"  OPTIONAL { ?prot dcterms:description ?description }\n" + 
+                		"}\n" + 
+                		"LIMIT 100"
             }
         ]
 
