@@ -144,16 +144,18 @@
                 <module>lode-virtuoso-impl</module>
             </modules>
         </profile>
-        <profile>
-            <id>knetminer-deploy</id>
-            <properties>
-            	<release.repo.id>ondex-releases</release.repo.id>
-            	<release.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/releases</release.repo.url>
-            	
-            	<snapshot.repo.id>ondex-snapshots</snapshot.repo.id>
-            	<snapshot.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/snapshots</snapshot.repo.url>
-            </properties>
-        </profile>
+
+			  <profile>
+					<id>knetminer-deploy</id>
+					<properties>
+						<release.repo.id>ondex-releases</release.repo.id>
+						<release.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/releases</release.repo.url>
+						
+						<snapshot.repo.id>ondex-snapshots</snapshot.repo.id>
+						<snapshot.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/snapshots</snapshot.repo.url>
+					</properties>
+			  </profile>
+        
     </profiles>
     <dependencies>
         <dependency>
