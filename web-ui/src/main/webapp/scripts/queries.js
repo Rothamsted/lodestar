@@ -21,7 +21,7 @@ var exampleQueries = [
 				description: "Selects genes that encode enzymes affecting reactions in the pathway at issue.",
 				namedgraph: "",
 				query: 
-					"SELECT DISTINCT ?geneName" +
+					"SELECT DISTINCT ?geneName\n" +
 					"WHERE {\n" + 
 			  	"  ?path a bk:Path.\n" + 
 			  	"  ?react bk:part_of ?path.\n" + 
