@@ -87,7 +87,14 @@ function _parseOptions(options) {
         'results_per_page' : 25,
         'inference' : false,
         'logging' : false,
-        'default_query' : "SELECT DISTINCT ?class \nwhere {[] a ?class}",
+        'default_query' : "SELECT DISTINCT ?class \n" + 
+        		"WHERE {\n" + 
+        		"  {\n" + 
+        		"    ?class a owl:Class.\n" + 
+        		"    FILTER ( REGEX ( ?class, STR (bk:) ) )\n" + 
+        		"  }\n" + 
+        		"}\n" +
+        		"ORDER BY ?class\n",
         'void_query' : "SELECT DISTINCT ?s ?p ?o \nwhere {?s a <http://rdfs.org/ns/void#Dataset>\n OPTIONAL {?s ?p ?o} }",
         'namespaces' : {
             rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
@@ -289,7 +296,7 @@ function _buildSparqlPage(element) {
     fieldSet.append(section1);
     fieldSet.append(section2);
 
-    var myTextArea = $("<textarea  name='query' id='textarea' rows='20' style='width:100%'></textarea>");
+    var myTextArea = $("<textarea  name='query' id='textarea' rows='30' style='width:100%'></textarea>");
 
     section1.append(
         $("<p></p>").append(
