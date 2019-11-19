@@ -1618,10 +1618,15 @@ function renderJson(uri) {
 
 function _getPrefixes () {
     var prefixes = '';
+    var flipper = 0;
     for (prefix in this.loadstarNamespaces) {
         var uri = this.loadstarNamespaces[prefix];
-        prefixes = prefixes + 'PREFIX ' + prefix + ': <' + uri + '>\n';
+        prefixes += 'PREFIX ' + prefix + ': <' + uri + '>';
+        // Two prefixes per row, allows for regaining some space for the real meat
+        prefixes += (flipper++ % 2 == 0) ? '\t' : '\n';
     }
+    if ( flipper % 2 == 0 ) prefixes += '\n';
+
     return prefixes;
 }
 
