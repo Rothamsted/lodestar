@@ -2,10 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <title>SPARQL Explorer</title>
-    <link rel="stylesheet" type="text/css" href="css/lode-style.css" />
-    <link rel="stylesheet" type="text/css" href="codemirror/codemirror.css" />
-    <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
+    <title>KnetMiner SPARQL Explorer</title>
+    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet"> <!-- KnetMiner branding css -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="codemirror/codemirror.js"></script>
     <script type="text/javascript" src="codemirror/sparql.js"></script>
@@ -14,38 +12,67 @@
     <script type="text/javascript" src="scripts/lode.js"></script>
 </head>
 
-
-<div class="grid_24">
-    <h1>Knetminer SPARQL endpoint</h1>
+<body>
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	   <a target="_blank" href="https://knetminer.org"><img class="logo-top" src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/logo-regular.png" height="48" alt="Logo"></a>   
+       <ul class="nav navbar-nav" id="top">
+          <li>
+		    <a target="_blank" href="https://pub.uni-bielefeld.de/publication/2915227">Cite Us</a>
+            <a target="_blank" href="http://knetminer.rothamsted.ac.uk/KnetMiner/KnetMiner_Tutorial-v3.1.pdf">User Guide</a>
+		  </li>
+    </ul>
+ 	</nav>  <!-- end navbar -->
+ 
+ <div id="content">
+    <h1>KnetMiner SPARQL endpoint</h1>
     
-    <p>This is the SPARQL endpoint for the data that power <a href = "https://knetminer.rothamsted.ac.uk">Knetminer</a>.
-    Knetminer is an application to explore knowledge graph about genes. Our group uses it to provide plant biology 
+    <p>This is the SPARQL endpoint for the data that powers <a href = "https://knetminer.rothamsted.ac.uk">KnetMiner</a>.
+    KnetMiner is an application to explore knowledge graph for candidate gene discovery. Our group uses it to provide plant biology 
     information, as well as to support other organisms.</p>
     
     <p>The hereby SPARQL endpoint gives you a programmatic access bases on linked data standards. The data are modelled
-    after our <a href = "https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>. We are also in the process of 
-    defining a more extended <a href = "https://github.com/Rothamsted/agri-schemas">AgriSchemas</a> and some prototype 
+    after our <a href="https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>. We are also in the process of 
+    defining a more extended <a href="https://github.com/Rothamsted/agri-schemas">AgriSchemas</a> and some prototype 
     examples are included here.</p> 
     
     <p>The same data model is used to populate our <a href = "https://neo4j.com">Neo4j</a> databases about 
-    <a href = "http://knetminer-wheat.cyverseuk.org:7474">wheat</a>
-    and <a href = "http://knetminer-ara.cyverseuk.org:7474">Arabidopsis</a>. The data are kept aligned
-    by means of our <a href = "https://github.com/Rothamsted/rdf2neo">rdf2neo tool</a> (which, in turn, is based on 
+    <a href="http://knetminer-wheat.cyverseuk.org:7474">wheat</a>
+    and <a href="http://knetminer-ara.cyverseuk.org:7474">Arabidopsis</a>. The data are kept aligned
+    by means of our <a href="https://github.com/Rothamsted/rdf2neo">rdf2neo tool</a> (which, in turn, is based on 
     <a href = "https://jena.apache.org">Jena</a>).</p>
     
-    <p>More details can be found on our <a href = "https://dx.doi.org/10.1515%2Fjib-2018-0023"IB2018 paper</a>.</p>
+    <p>More details can be found on our <a href="https://dx.doi.org/10.1515%2Fjib-2018-0023">IB2018 paper</a>.</p>
     
-    <p>Our data endpoints runs on <a href = "https://www.cyverse.org">Cyverse</a> resources, kindly provided by the 
-    <a href = "https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.</p>
+    <p>Our data endpoints runs on <a href="https://www.cyverse.org">Cyverse</a> resources, kindly provided by the 
+    <a href="https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.</p>
     
     <p>The hereby SPARQL browser is based on the EBI's <a href="http://ebispot.github.io/lodestar/">LODEStar tool</a>,
     which runs on top of Virtuoso.</p>
     
-    <p>We are founded by the UK BBSRC Designing Future Wheat project</p>
+    <p>We are funded by the UK BBSRC Designing Future Wheat (DFW) project</p>
     
     <p><b>Too many words!? Enter the SPARQL endpoint <a href="./sparql">here</a>!</b></p>
 </div>
 
+    <div class="contact-footer" style="position:fixed;bottom:0;">
+	      <ul style="overflow:hidden;margin-bottom: 0px;">
+		     <li class="left-footer">
+			   <a target="_blank" title="Rothamsted Research" href="http://www.rothamsted.ac.uk/" class="logos"><img src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/rothamsted_logo.png" width="80" height="80"></a>
+			   <a target="_blank" title="BBSRC" href="http://www.bbsrc.ac.uk/" class="logos"><img class="bbsrc-logo" src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/bbsrc_logo.png"></a>
+			 </li>
+		     <li class="center-footer">
+			   <a target="_blank" title="KnetMiner" href="https://knetminer.org" class="logos"><img src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/logo-regular.png" height="90"></a>
+			 </li>
+			 <li class="right-footer">
+			   <ul class="nav navbar-nav" id="bottom">
+			     <li>
+				   <p id="footer-text"><span style="color:darkOrange">KnetMiner</span> powered by SPARQL</p>
+				   <a target="_blank" href="https://github.com/Rothamsted/knetmaps.js/blob/master/LICENSE">License</a>
+				   <a target="_blank" href="https://twitter.com/knetminer">Twitter</a>
+				 </li>
+			   </ul>
+			 </li>
+		  </ul>
+       </div>
 </body>
-
 </html>
