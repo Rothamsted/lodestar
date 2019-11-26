@@ -15,12 +15,12 @@ var lodeNamespacePrefixes = {
 	bkr: "http://www.ondex.org/bioknet/resources/",
 	bka: "http://www.ondex.org/bioknet/terms/attributes/",
 	rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
-    rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
-    owl: 'http://www.w3.org/2002/07/owl#',
-    dc: 'http://purl.org/dc/elements/1.1/',
-    dcterms: 'http://purl.org/dc/terms/',
-    agri: 'http://agrischemas.org/',
-    bioschema: 'http://bioschemas.org/',
-    schema: 'http://schema.org/'
+  rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
+  owl: 'http://www.w3.org/2002/07/owl#',
+  dc: 'http://purl.org/dc/elements/1.1/',
+  dcterms: 'http://purl.org/dc/terms/',
+  agri: 'http://agrischemas.org/',
+  bioschema: 'http://bioschemas.org/',
+  schema: 'http://schema.org/'
 };
 
