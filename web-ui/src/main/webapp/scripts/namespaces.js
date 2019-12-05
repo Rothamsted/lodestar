@@ -11,9 +11,9 @@
  */
 
 var lodeNamespacePrefixes = {
-	bk: "http://www.ondex.org/bioknet/terms/",
-	bkr: "http://www.ondex.org/bioknet/resources/",
-	bka: "http://www.ondex.org/bioknet/terms/attributes/",
+	bk: "http://knetminer.org/data/rdf/terms/biokno/",
+	bkr: "http://knetminer.org/data/rdf/resources/",
+	bka: "http://knetminer.org/data/rdf/terms/biokno/attributes/",
 	rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   rdfs: 'http://www.w3.org/2000/01/rdf-schema#',
   owl: 'http://www.w3.org/2002/07/owl#',
