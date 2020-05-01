@@ -293,6 +293,3 @@ var exampleQueries = [
   } // covid19 group
 ]; // All
 
-// TODO: For the moment CoViD is disabled, we need to decide if this goes to Cyverse or elsewhere.
-exampleQueries.pop ();
-
