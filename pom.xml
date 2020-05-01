@@ -1,5 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+		<parent>
+		  <groupId>uk.ac.rothamsted.knetminer</groupId>
+		  <artifactId>knetminer-common</artifactId>
+		  <version>1.0-SNAPSHOT</version>
+		</parent>  
+
     <properties>
         <lodestar.version>1.4.1</lodestar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -118,6 +124,15 @@
    	            <enabled>true</enabled>
    	        </snapshots>
    	    </repository>
+
+			  <repository>
+					<id>knetminer-repo</id>
+					<name>Knetminer Unified Repository</name>
+					<url>https://knetminer.org/artifactory/repository/maven-public</url>
+					<snapshots><enabled>true</enabled></snapshots>
+					<releases><enabled>true</enabled></releases>
+			  </repository>
+   	    
    	</repositories>
     
     <!-- Maven repository deploy -->
@@ -148,11 +163,11 @@
 			  <profile>
 					<id>knetminer-deploy</id>
 					<properties>
-						<release.repo.id>ondex-releases</release.repo.id>
-						<release.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/releases</release.repo.url>
+						<release.repo.id>${knetminer.mvnrepo.rel.id}</release.repo.id>
+						<release.repo.url>${knetminer.mvnrepo.rel.url}</release.repo.url>
 						
-						<snapshot.repo.id>ondex-snapshots</snapshot.repo.id>
-						<snapshot.repo.url>http://ondex.rothamsted.ac.uk/nexus/content/repositories/snapshots</snapshot.repo.url>
+						<snapshot.repo.id>${knetminer.mvnrepo.snapshots.id}</snapshot.repo.id>
+						<snapshot.repo.url>${knetminer.mvnrepo.snapshots.url}</snapshot.repo.url>
 					</properties>
 			  </profile>
         
@@ -174,14 +189,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${org.slf4j.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
             <scope>test</scope>
         </dependency>
 

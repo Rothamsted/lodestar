@@ -1,3 +1,8 @@
+# Linked Data Browser at Knetminer/Data
+
+***This branch is to manage a LODEStar version of [Knetminer Data Site](https://knetminer.org/data). 
+You find more explanations on that web site. The original LODEStar text follows below.***
+
 # Lodestar
 
 Lodestar is a Linked Data Browser and SPARQL endpoint. Lodestar is a Java based web app that can wrap any existing SPARQL endpoint to provide a set of additional SPARQL and Linked Data services. Lodestar was developed to provide a consistent set of SPARQL and Linked Data services across the European Bioinformatics Institute (EBI). Some of the service provided by Lodestar:
