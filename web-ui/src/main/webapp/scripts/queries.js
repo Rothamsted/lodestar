@@ -192,15 +192,10 @@ var exampleQueries = [
 					"  ?gene a bk:Gene;\n" + 
 					"    dc:identifier/dcterms:identifier ?geneAcc.\n" + 
 					"\n" + 
-					"  {\n" + 
-					"    ?gene bk:enc ?protein\n" + 
-					"  }\n" + 
-					"  UNION {\n" + 
-					"    ?gene bk:enc ?xref.\n" + 
-					"    ?xref a bk:Protein;\n" + 
-					"      bk:prefName ?xrefName.\n" + 
-					"    ?xref bk:xref|^bk:xref ?protein.\n" + 
-					"  }\n" + 
+					"  ?gene bk:enc ?xref.\n" + 
+					"  ?xref a bk:Protein;\n" + 
+					"    bk:prefName ?xrefName.\n" + 
+					"  ?xref bk:xref|^bk:xref ?protein.\n" + 
 					"\n" + 
 					"  FILTER ( LCASE (?drugName) IN (\n" + 
 					"    'opril',\n" + 
