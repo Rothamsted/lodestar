@@ -179,62 +179,38 @@ var exampleQueries = [
 				description: "",
 				namedgraph: "",
 				query: 
-					"SELECT ?drugName ?protName ?geneAcc ?drug ?protein ?gene\n" +
-					"FROM bkg:human-covid19\n" +
-					"{  \n" +
-					"  ?drug a bk:Drug;\n" +
-					"    bk:prefName ?drugName;\n" +
-					"    bk:has_target ?protein.\n" +
-					"  \n" +
-					"  ?protein a bk:Protein;\n" +
-					"    bk:prefName ?protName.\n" +
-					"  \n" +
-					"  OPTIONAL {\n" +
-					"    ?gene a bk:Gene;\n" +
-					"      bk:enc ?protein;\n" +
-					"      dc:identifier/dcterms:identifier ?geneAcc.\n" +
-					"  }\n" +
-					"\n" +
-					"  FILTER ( LCASE (?drugName) IN (\n" +
-					"    'opril',\n" +
-					"    'minoxidil',\n" +
-					"    'benzoyl peroxide',\n" +
-					"    'isotretinoin',\n" +
-					"    'trifluoperazine'\n" +
-					"  ))\n" +
-					"}\n" +
-					"ORDER BY ?drugName ?protName ?geneAcc\n"				
-			},
-			{
-				shortname: "Proteins and genes related to known drugs",
-				description: "",
-				namedgraph: "",
-				query: 
-					"SELECT ?drugName ?protName ?geneAcc ?drug ?protein ?gene\n" +
-					"FROM bkg:human-covid19\n" +
-					"{  \n" +
-					"  ?drug a bk:Drug;\n" +
-					"    bk:prefName ?drugName;\n" +
-					"    bk:has_target ?protein.\n" +
-					"  \n" +
-					"  ?protein a bk:Protein;\n" +
-					"    bk:prefName ?protName.\n" +
-					"  \n" +
-					"  OPTIONAL {\n" +
-					"    ?gene a bk:Gene;\n" +
-					"      bk:enc ?protein;\n" +
-					"      dc:identifier/dcterms:identifier ?geneAcc.\n" +
-					"  }\n" +
-					"\n" +
-					"  FILTER ( LCASE (?drugName) IN (\n" +
-					"    'opril',\n" +
-					"    'minoxidil',\n" +
-					"    'benzoyl peroxide',\n" +
-					"    'isotretinoin',\n" +
-					"    'trifluoperazine'\n" +
-					"  ))\n" +
-					"}\n" +
-					"ORDER BY ?drugName ?protName ?geneAcc\n"				
+					"SELECT DISTINCT ?drugName ?protName ?geneAcc ?xrefName ?gene ?protein ?xref\n" + 
+					"FROM bkg:human-covid19\n" + 
+					"{  \n" + 
+					"  ?drug a bk:Drug;\n" + 
+					"    bk:prefName ?drugName;\n" + 
+					"    bk:has_target ?protein.\n" + 
+					"  \n" + 
+					"  ?protein a bk:Protein;\n" + 
+					"    bk:prefName ?protName.\n" + 
+					"  \n" + 
+					"  ?gene a bk:Gene;\n" + 
+					"    dc:identifier/dcterms:identifier ?geneAcc.\n" + 
+					"\n" + 
+					"  {\n" + 
+					"    ?gene bk:enc ?protein\n" + 
+					"  }\n" + 
+					"  UNION {\n" + 
+					"    ?gene bk:enc ?xref.\n" + 
+					"    ?xref a bk:Protein;\n" + 
+					"      bk:prefName ?xrefName.\n" + 
+					"    ?xref bk:xref|^bk:xref ?protein.\n" + 
+					"  }\n" + 
+					"\n" + 
+					"  FILTER ( LCASE (?drugName) IN (\n" + 
+					"    'opril',\n" + 
+					"    'minoxidil',\n" + 
+					"    'benzoyl peroxide',\n" + 
+					"    'isotretinoin',\n" + 
+					"    'trifluoperazine'\n" + 
+					"  ))\n" + 
+					"}\n" + 
+					"ORDER BY ?drugName ?protName ?geneAcc"		
 			},
 			{
 				shortname: "Distribution biomolecular entity citations and associated diseases",
