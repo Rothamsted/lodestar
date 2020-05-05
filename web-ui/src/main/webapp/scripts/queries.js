@@ -209,7 +209,7 @@ var exampleQueries = [
 			},
 			{
 				shortname: "Distribution biomolecular entity citations and associated diseases",
-				description: "An example of how to get stats. Counts citations of genes/proteins associated to diseases" +
+				description: "An example of how to get stats. Counts citations of genes/proteins associated to diseases " +
 					"and reports the frequency distribution of citations per diseases.",
 				namedgraph: "",
 				query: 
