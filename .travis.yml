@@ -8,7 +8,7 @@ install:
   - wget https://raw.githubusercontent.com/Rothamsted/knetminer-common/master/travis/maven-settings.xml
     
 script:
-  - mvn deploy -Pvirtuoso,knetminer-deploy --settings settings.xml
+  - mvn deploy -Pvirtuoso,knetminer-deploy --settings maven-settings.xml
 
 cache:
   directories:
