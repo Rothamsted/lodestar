@@ -101,7 +101,7 @@ var exampleQueries = [
 					"  agri:score ?score;\n" +
 					"  agri:evidence ?study.\n" +
 					"                \n" +
-					"?condition schema:prefName ?condLabel.\n" +
+					"?condition schema:name ?condLabel.\n" +
 					"OPTIONAL { ?condition dc:type ?condTerm. }\n" +
 					"  \n" +
 					"?study \n" +
@@ -134,7 +134,7 @@ var exampleQueries = [
 					"		bka:AbstractHeader ?pubTitle.\n" +
 					"	OPTIONAL { ?pub bka:YEAR ?pubYear }\n" +
 					"			\n" +
-					"	?condition schema:prefName ?condLabel.\n" +
+					"	?condition schema:name ?condLabel.\n" +
 					"	OPTIONAL { ?condition dc:type ?condTerm. }\n" +
 					"		\n" +
 					"	?study \n" +
