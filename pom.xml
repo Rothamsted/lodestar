@@ -9,7 +9,7 @@
     <properties>
         <lodestar.version>1.4.1</lodestar.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.springframework.version>4.3.3.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.30.RELEASE</org.springframework.version>
         <!-- Comes from the parent, needs to be downgraded in order to prevent nefarious mixes -->
 				<springframework.version>${org.springframework.version}</springframework.version>        
         <org.slf4j.version>1.7.32</org.slf4j.version>
