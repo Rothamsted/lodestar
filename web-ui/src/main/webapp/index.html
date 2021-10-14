@@ -4,11 +4,11 @@
 <head>
     <title>KnetMiner SPARQL Explorer</title>
 
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico"></link>
 
     <!-- KnetMiner branding css -->
-    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet">
-    <link href="css/pop-up.css" rel="stylesheet">
+    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet"></link>
+    <!-- TODO: remove link href="css/pop-up.css" rel="stylesheet" -->
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="codemirror/codemirror.js"></script>
@@ -36,58 +36,73 @@
 	<div id="content">
 	    <h1>KnetMiner SPARQL endpoint</h1>
 	    
-	    <p>This is the SPARQL endpoint for the data that powers <a href = "https://knetminer.rothamsted.ac.uk">KnetMiner</a>.
-	    KnetMiner is an application to explore knowledge graph for candidate gene discovery. Our group uses it to provide plant biology 
-	    information, as well as to support other organisms.</p>
+	    <h2>TL;DR</h2>
+	    <p>Enter the KnetMiner <a href="./sparql">SPARQL endpoint</a>!</p>
 	    
-	    <p>The hereby SPARQL endpoint gives you a programmatic access bases on linked data standards. The data are modelled
-	    after our <a href="https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>. We are also in the process of 
-	    defining a more extended <a href="https://github.com/Rothamsted/agri-schemas">AgriSchemas</a> and some prototype 
-	    examples are included here.</p> 
+	    <p>Some of the datasets available from SPARQL are also accessible from <a href = "https://neo4j.com">Neo4j</a> 
+	    endpoints:
 	    
-	    <p>The same data model is used to populate our <a href = "https://neo4j.com">Neo4j</a> databases about 
-	    <a href="http://knetminer-wheat.cyverseuk.org:7474">wheat</a>
-	    and <a href="http://knetminer-ara.cyverseuk.org:7474">Arabidopsis</a> 
-	    (<a href = "#bolt-urls" class = "popUpLink"><i>connection details</i></a>). 
-	    The data are kept aligned by means of our <a href="https://github.com/Rothamsted/rdf2neo">rdf2neo tool</a> 
-	    (which, in turn, is based on <a href = "https://jena.apache.org">Jena</a>).</p>
+	    <ul>
+	    	<li><a href="http://knetminer-wheat.cyverseuk.org:7474">Poaceae</a> (ie, a set of gramineae, including wheat, plus
+	    	Arabidopsis). For programmatic access: <code>bolt://knetminer-neo4j.cyverseuk.org:7687</code> (no user/password needed).</li>
+
+	    	<li><a href = "http://knetminer-covid19.cyverseuk.org:7476/browser/">COVID-19</a> dataset, which we have started
+	    	developing during the <a href = "https://github.com/virtual-biohackathons/covid-19-bh20">CoViD-19 Bio-hackathon</a>
+	    	in 2020. Details <a href = "https://github.com/Rothamsted/covid19-kg/blob/master/RawDataEndPoints.md">here</a>.
+	    	For programmatic access: <code>bolt://knetminer-neo4j.cyverseuk.org:7689</code> (no user/password needed).</li>
+	    </ul>
+	    </p> 
 	    
-	    <p>More details can be found on our <a href="https://dx.doi.org/10.1515%2Fjib-2018-0023">IB2018 paper</a>.</p>
 	    
-	    <p>Recently, we have added a 
-	    <a href = "https://github.com/Rothamsted/covid19-kg/blob/master/RawDataEndPoints.md">CoViD-19 knowledge graph</a>, 
-	    which we have started developing within the 
-	    <a href = "https://github.com/virtual-biohackathons/covid-19-bh20">CoViD-19 Bio-hackathon</a> and the 
-	    <a href = "https://covirt19.org/">COVID-19 International Research Team</a>.</p> 
-	        
-	    <p>Our data endpoints runs on <a href="https://cyverseuk.org/">Cyverse UK</a> resources, kindly provided by the 
-	    <a href="https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.</p>
 	    
-	    <p>The hereby SPARQL browser is based on the EBI's <a href="http://ebispot.github.io/lodestar/">LODEStar tool</a>,
-	    which runs on top of Virtuoso.</p>
+	    <h2>What is it?</h2>
 	    
-	    <p>We are funded by the UK BBSRC Designing Future Wheat (DFW) project</p>
+	    <p>This is the SPARQL endpoint for the knowledge graphs that powers 
+	    <a href = "https://knetminer.rothamsted.ac.uk">KnetMiner</a>. KnetMiner is an application to explore knowledge 
+	    graph for candidate gene discovery. Our group uses it to provide access to plant biology information, as well 
+	    as to support other organisms.</p>
 	    
-	    <p><b>Too many words!? Enter the SPARQL endpoint <a href="./sparql">here</a>!</b></p>
+	    <p>The data endpoints offer machine-readable access to the same data that we use for the KnetMiner application, this
+	    offers the opportunity for a wider use of the data, for instance, to do Excel exports or to run analyses by means
+	    of your own Python scripts.</p>
 	    
-	    <!-- Pure pop-up code copied from  https://codepen.io/imprakash/pen/GgNMXO -->
-	    <div id = "bolt-urls" class = "overlay">
-		    <div class = "popup">
-			    <a class="close" href="#">&times;</a>
-			    To access Neo4j endpoint programmatically (ie, using the Neo4j driver), 
-			    you need these URLs:
-		      <ul>
-		        <li>Wheat dataset:<br/>
-		            <pre>bolt://knetminer-neo4j.cyverseuk.org:7687</pre></li>
-		        <li>Arabidopsis dataset:<br/>
-		            <pre>bolt://knetminer-neo4j.cyverseuk.org:7688</pre></li>
-		        <li>CoViD-19 dataset:<br/>
-		            <pre>bolt://knetminer-neo4j.cyverseuk.org:7689</pre></li>
-		      </ul>
-		      No password is needed to connect these databases.
-		    </div>
-	    </div>
-	
+	    
+	    
+	    <h2>Want to know more?</h2>
+
+	    <p>The endpoints are based on data standards and <a href = "https://www.go-fair.org/fair-principles/">FAIR data principles</a>. 
+	    The data are modelled after our <a href="https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>. We are also 
+	    in the process of defining a more extended <a href="https://github.com/Rothamsted/agri-schemas">AgriSchemas</a> 
+	    and some prototype examples are included here.</p> 
+	    
+	    <p>More details are available from:
+	    
+	    <ul>
+	    	<li><a href="https://dx.doi.org/10.1515%2Fjib-2018-0023">IB2018 paper</a>.</li>
+	    	<li>Our introductions on the 
+	    	<a href = "https://knetminer.com/cases/the-power-of-standardised-and-fair-knowledge-graphs.html">KnetMiner Blog</a> 
+	    	and on the <a href = "https://designingfuturewheat.org.uk/dfw-and-fair-agriculture-data-the-knetminer-experience/">DFW blog</a>.</li>
+	    	<li><a href = "https://github.com/Rothamsted/rdf2pg">rdf2pg</a>, the tool we have developed to keep RDF data 
+	    	and Neo4j aligned under the same model.</li>
+	    </ul> 
+	    </p>
+	    
+	    
+	    <h2>Acknowledgements</h2>
+	   	
+	   	<p>
+	   	<ul>
+	   	<li>Our data endpoints runs on <a href="https://cyverseuk.org/">Cyverse UK</a> resources, kindly provided by the 
+	    <a href="https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.</li>
+	    
+	    <li>The hereby SPARQL browser is based on the EBI's <a href="http://ebispot.github.io/lodestar/">LODEStar tool</a>,
+	    which runs on top of Virtuoso.</li>
+	    
+	    <li>We are funded by the UK BBSRC <a href = "https://designingfuturewheat.org.uk">Designing Future Wheat</a> (DFW) 
+	    project.</li>
+	    
+	    </ul>
+			</p>
 	</div>
 
   <div class="contact-footer" style="position:fixed;bottom:0;">
