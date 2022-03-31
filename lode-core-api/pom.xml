@@ -10,18 +10,25 @@
     <artifactId>lode-core-api</artifactId>
     <dependencies>
 
-        <!-- logging dependencies -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+			  <dependency>
+			    <groupId>org.apache.logging.log4j</groupId>
+			    <artifactId>log4j-api</artifactId>
+			  </dependency>
+			  <dependency>
+			    <groupId>org.apache.logging.log4j</groupId>
+			    <artifactId>log4j-core</artifactId>
+			    <scope>test</scope>
+			  </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+				<dependency>
+					<groupId>org.apache.logging.log4j</groupId>
+					<artifactId>log4j-slf4j-impl</artifactId>
+				</dependency>
+				<dependency>
+				  <groupId>org.apache.logging.log4j</groupId>
+				  <artifactId>log4j-1.2-api</artifactId>
+				</dependency>
+				
 
         <dependency>
             <groupId>org.apache.jena</groupId>
@@ -33,7 +40,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
         </dependency>
 
         <dependency>
@@ -58,13 +64,11 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.11.0</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.11.0</version>
         </dependency>
 
         <!--
@@ -99,6 +103,13 @@
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.5.3</version>
         </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 
 </project>
