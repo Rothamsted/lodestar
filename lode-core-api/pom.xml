@@ -71,20 +71,6 @@
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!--
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>1.9.13</version>
-        </dependency>
-        -->
-
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -97,12 +83,14 @@
             <version>3.1</version>
         </dependency>
 
-        <!-- jackson json mapping library, describes mappings from java to json for model objects -->
-        <dependency>
+        <!-- jackson json mapping library, describes mappings from java to json for model objects 
+        	TODO: remove, was migrated into jackson-core
+        -->
+        <!-- dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.5.3</version>
-        </dependency>
+        </dependency -->
         
         <dependency>
             <groupId>junit</groupId>
