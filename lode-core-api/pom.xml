@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20090211</version>
+            <version>20220320</version>
         </dependency>
 
         <!-- Override Jena dependencies on versions of httpclient and jackson with CVEs -->
@@ -74,13 +74,12 @@
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.1.1</version>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.1</version>
         </dependency>
 
         <!-- jackson json mapping library, describes mappings from java to json for model objects 
