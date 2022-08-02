@@ -78,36 +78,48 @@ var exampleQueries = [
 				shortname: "Gene Expression about given genes",
 				description: "Shows expression levels from GXA from a given list of (Knetminer) genes",
 				namedgraph: "",
-				query: 
-					"SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?condTerm \n" +
-					"{\n" +
-					"?gene a bk:Gene;\n" +
-					"  dcterms:identifier ?geneAcc.\n" +
-					"\n" +
-					"FILTER ( UCASE (?geneAcc) IN ( \n" +
-					"  'TRAESCS2D02G242700','TRAESCSU02G073600','TRAESCS7D02G050400',\n" +
-					"  'TRAESCS6D02G393900','TRAESCS7D02G503700','TRAESCS7D02G431500',\n" +
-					"  'TRAESCS1D02G090100','TRAESCS1D02G156000','TRAESCS2B02G046700',\n" +
-					"  'TRAESCS4A02G318000','TRAESCS1A02G443400','TRAESCS7D02G241300',\n" +
-					"  'TRAESCS6D02G107700','TRAESCS5D02G247200'\n" +
-					"))  \n" +
-					"\n" +
-					"?gene bioschema:expressedIn ?condition.\n" +
-					"  \n" +
-					"?expStatement a rdfs:Statement;\n" +
-					"  rdf:subject ?gene;\n" +
-					"  rdf:predicate bioschema:expressedIn;\n" +
-					"  rdf:object ?condition;\n" +
-					"  agri:score ?score;\n" +
-					"  agri:evidence ?study.\n" +
-					"                \n" +
-					"?condition schema:prefName ?condLabel.\n" +
-					"OPTIONAL { ?condition schema:additionalType ?condTerm. }\n" +
-					"  \n" +
-					"?study \n" +
-					"  dc:title ?studyTitle;\n" +
-					"}\n" +
-					"ORDER BY ?study ?gene\n"
+				query:
+					"SELECT ?gene ?geneAcc ?condLabel ?studyTitle ?study ?condTerm ?scoreStr\n"
+					+ "{\n"
+					+ "  ?gene a bk:Gene;\n"
+					+ "    dcterms:identifier ?geneAcc.\n"
+					+ "\n"
+					+ "  FILTER ( UCASE (?geneAcc) IN ( \n"
+					+ "    'TRAESCS2D02G242700','TRAESCSU02G073600','TRAESCS7D02G050400',\n"
+					+ "    'TRAESCS6D02G393900','TRAESCS7D02G503700','TRAESCS7D02G431500',\n"
+					+ "    'TRAESCS1D02G090100','TRAESCS1D02G156000','TRAESCS2B02G046700',\n"
+					+ "    'TRAESCS4A02G318000','TRAESCS1A02G443400','TRAESCS7D02G241300',\n"
+					+ "    'TRAESCS6D02G107700','TRAESCS5D02G247200'\n"
+					+ "  ))  \n"
+					+ "\n"
+					+ "  ?gene bioschema:expressedIn ?condition.\n"
+					+ "\n"
+					+ "  ?expStatement a rdfs:Statement;\n"
+					+ "    rdf:subject ?gene;\n"
+					+ "    rdf:predicate bioschema:expressedIn;\n"
+					+ "    rdf:object ?condition;\n"
+					+ "    agri:evidence ?study.\n"
+					+ "\n"
+					+ "  # Examples of scoring figures\n"
+					+ "  {\n"
+					+ "    ?expStatement agri:pvalue ?pvalue; agri:log2FoldChange ?foldChange. \n"
+					+ "    FILTER ( ?pvalue < 1e-3 && ABS ( ?foldChange ) > 1.5 )\n"
+					+ "    BIND ( CONCAT ( \"p-value: \", ?pvalue, \", log2 FC: \", ?foldChange ) AS ?scoreStr )\n"
+					+ "  }\n"
+					+ "  UNION\n"					
+					+ "  {\n"
+					+ "    ?expStatement agri:ordinalTpm ?ordinalTpm; agri:tpmCount ?tpm.\n"
+					+ "    FILTER ( ?ordinalTpm in ('medium', 'high') ) \n"
+					+ "    BIND ( CONCAT ( ?tpm, \" TPM\" ) AS ?scoreStr )\n"
+					+ "  }\n"
+					+ "\n"
+					+ "  ?condition schema:name ?condLabel.\n"
+					+ "  OPTIONAL { ?condition dc:type ?condTerm. }\n"
+					+ "\n"
+					+ "  ?study \n"
+					+ "    dc:title ?studyTitle\n"
+					+ "}\n"
+					+ "ORDER BY ?study ?gene\n"				
 			},
 			{
 				shortname: "Gene Expression and publications",
@@ -125,7 +137,6 @@ var exampleQueries = [
 					"		rdf:subject ?gene;\n" +
 					"		rdf:predicate bioschema:expressedIn;\n" +
 					"		rdf:object ?condition;\n" +
-					"		agri:score ?score;\n" +
 					"		agri:evidence ?study.\n" +
 					"\n" +
 					"	?gene bk:occ_in ?pub.\n" +
@@ -134,8 +145,8 @@ var exampleQueries = [
 					"		bka:AbstractHeader ?pubTitle.\n" +
 					"	OPTIONAL { ?pub bka:YEAR ?pubYear }\n" +
 					"			\n" +
-					"	?condition schema:prefName ?condLabel.\n" +
-					"	OPTIONAL { ?condition schema:additionalType ?condTerm. }\n" +
+					"	?condition schema:name ?condLabel.\n" +
+					"	OPTIONAL { ?condition dc:type ?condTerm. }\n" +
 					"		\n" +
 					"	?study \n" +
 					"		dc:title ?studyTitle;\n" +
@@ -179,66 +190,37 @@ var exampleQueries = [
 				description: "",
 				namedgraph: "",
 				query: 
-					"SELECT ?drugName ?protName ?geneAcc ?drug ?protein ?gene\n" +
-					"FROM bkg:human-covid19\n" +
-					"{  \n" +
-					"  ?drug a bk:Drug;\n" +
-					"    bk:prefName ?drugName;\n" +
-					"    bk:has_target ?protein.\n" +
-					"  \n" +
-					"  ?protein a bk:Protein;\n" +
-					"    bk:prefName ?protName.\n" +
-					"  \n" +
-					"  OPTIONAL {\n" +
-					"    ?gene a bk:Gene;\n" +
-					"      bk:enc ?protein;\n" +
-					"      dc:identifier/dcterms:identifier ?geneAcc.\n" +
-					"  }\n" +
-					"\n" +
-					"  FILTER ( LCASE (?drugName) IN (\n" +
-					"    'opril',\n" +
-					"    'minoxidil',\n" +
-					"    'benzoyl peroxide',\n" +
-					"    'isotretinoin',\n" +
-					"    'trifluoperazine'\n" +
-					"  ))\n" +
-					"}\n" +
-					"ORDER BY ?drugName ?protName ?geneAcc\n"				
-			},
-			{
-				shortname: "Proteins and genes related to known drugs",
-				description: "",
-				namedgraph: "",
-				query: 
-					"SELECT ?drugName ?protName ?geneAcc ?drug ?protein ?gene\n" +
-					"FROM bkg:human-covid19\n" +
-					"{  \n" +
-					"  ?drug a bk:Drug;\n" +
-					"    bk:prefName ?drugName;\n" +
-					"    bk:has_target ?protein.\n" +
-					"  \n" +
-					"  ?protein a bk:Protein;\n" +
-					"    bk:prefName ?protName.\n" +
-					"  \n" +
-					"  OPTIONAL {\n" +
-					"    ?gene a bk:Gene;\n" +
-					"      bk:enc ?protein;\n" +
-					"      dc:identifier/dcterms:identifier ?geneAcc.\n" +
-					"  }\n" +
-					"\n" +
-					"  FILTER ( LCASE (?drugName) IN (\n" +
-					"    'opril',\n" +
-					"    'minoxidil',\n" +
-					"    'benzoyl peroxide',\n" +
-					"    'isotretinoin',\n" +
-					"    'trifluoperazine'\n" +
-					"  ))\n" +
-					"}\n" +
-					"ORDER BY ?drugName ?protName ?geneAcc\n"				
+					"SELECT DISTINCT ?drugName ?protName ?geneAcc ?xrefName ?gene ?protein ?xref\n" + 
+					"FROM bkg:human-covid19\n" + 
+					"{  \n" + 
+					"  ?drug a bk:Drug;\n" + 
+					"    bk:prefName ?drugName;\n" + 
+					"    bk:has_target ?protein.\n" + 
+					"  \n" + 
+					"  ?protein a bk:Protein;\n" + 
+					"    bk:prefName ?protName.\n" + 
+					"  \n" + 
+					"  ?gene a bk:Gene;\n" + 
+					"    dc:identifier/dcterms:identifier ?geneAcc.\n" + 
+					"\n" + 
+					"  ?gene bk:enc ?xref.\n" + 
+					"  ?xref a bk:Protein;\n" + 
+					"    bk:prefName ?xrefName.\n" + 
+					"  ?xref bk:xref|^bk:xref ?protein.\n" + 
+					"\n" + 
+					"  FILTER ( LCASE (?drugName) IN (\n" + 
+					"    'opril',\n" + 
+					"    'minoxidil',\n" + 
+					"    'benzoyl peroxide',\n" + 
+					"    'isotretinoin',\n" + 
+					"    'trifluoperazine'\n" + 
+					"  ))\n" + 
+					"}\n" + 
+					"ORDER BY ?drugName ?protName ?geneAcc"		
 			},
 			{
 				shortname: "Distribution biomolecular entity citations and associated diseases",
-				description: "An example of how to get stats. Counts citations of genes/proteins associated to diseases" +
+				description: "An example of how to get stats. Counts citations of genes/proteins associated to diseases " +
 					"and reports the frequency distribution of citations per diseases.",
 				namedgraph: "",
 				query: 

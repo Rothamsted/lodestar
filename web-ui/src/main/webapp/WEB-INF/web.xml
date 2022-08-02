@@ -66,13 +66,14 @@
            <dispatcher>FORWARD</dispatcher>
        </filter-mapping>
 
-
+		<!-- Temporary disabled, to test with Jetty 
     <resource-ref>
         <description>Virtuoso Datasource</description>
         <res-ref-name>jdbc/virtuoso</res-ref-name>
         <res-type>virtuoso.jdbc4.VirtuosoDataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
+		-->
 
     <!-- health status monitoring -->
 
@@ -101,5 +102,24 @@
         <url-pattern>/status</url-pattern>
     </filter-mapping>
 
-
+		<!-- We have come URLs that we redirect to Docker, under the same server -->
+		<!-- TODO: Under test
+		<servlet>
+		  <servlet-name>aratinyDeploy</servlet-name>
+		  <servlet-class>org.mitre.dsmiley.httpproxy.ProxyServlet</servlet-class>
+		  <init-param>
+		    <param-name>targetUri</param-name>
+		    <param-value>https://knetminer.com/wheatknet/network</param-value>
+		  </init-param>
+		  <init-param>
+		    <param-name>log</param-name>
+		    <param-value>true</param-value>
+		  </init-param>
+		</servlet>
+		<servlet-mapping>
+		  <servlet-name>aratinyDeploy</servlet-name>
+		  <url-pattern>/aratiny-deploy/*</url-pattern>
+		</servlet-mapping>
+		-->
+		
 </web-app>

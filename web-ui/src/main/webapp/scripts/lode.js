@@ -87,14 +87,15 @@ function _parseOptions(options) {
         'results_per_page' : 25,
         'inference' : false,
         'logging' : false,
-        'default_query' : "SELECT DISTINCT ?class \n" + 
-        		"WHERE {\n" + 
-        		"  {\n" + 
-        		"    ?class a owl:Class.\n" + 
-        		"    FILTER ( REGEX ( ?class, STR (bk:) ) )\n" + 
-        		"  }\n" + 
-        		"}\n" +
-        		"ORDER BY ?class\n",
+        'default_query' : 
+        	"SELECT DISTINCT ?class (COUNT(?res) AS ?instances)\n" + 
+        	"WHERE {\n" + 
+        	"  ?class a owl:Class.\n" + 
+        	"  FILTER ( REGEX ( ?class, STR(bk:) ) )\n" + 
+        	"  ?res a ?class\n" + 
+        	"}\n" + 
+        	"GROUP BY ?class\n" + 
+        	"ORDER BY DESC (?instances)\n",
         'void_query' : "SELECT DISTINCT ?s ?p ?o \nwhere {?s a <http://rdfs.org/ns/void#Dataset>\n OPTIONAL {?s ?p ?o} }",
         'namespaces' : {
             rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
