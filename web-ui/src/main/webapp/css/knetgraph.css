@@ -1,0 +1,33 @@
+  .very-light-green-box {
+    background-color: #e5f8eb;
+    width: 99%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .very-light-green-box-padded {
+    background-color: #e5f8eb;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .light-green-box {
+    background-color: rgb(183, 240, 186);
+    width: 99%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .green-box {
+    background-color: #51ce7b;
+    width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    max-width: 96%;
+  }
+  

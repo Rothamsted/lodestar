@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-    <title>KnetMiner SPARQL Explorer</title>
 
-		<link rel="shortcut icon" href="images/favicon.ico"></link>
+<head>
+    <title>KnetMiner KnetGraph Endpoints</title>
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    </link>
 
     <!-- KnetMiner branding css -->
-    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet"></link>
-    <!-- TODO: remove link href="css/pop-up.css" rel="stylesheet" -->
+    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet">
+    </link>
+    <!-- Additional, accessible css script, can overwrite the above (but please, both are required) -->
+    <link href="css/knetgraph.css" rel="stylesheet">
+    </link>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="codemirror/codemirror.js"></script>
@@ -16,112 +21,141 @@
     <script type="text/javascript" src="scripts/namespaces.js"></script>
     <script type="text/javascript" src="scripts/queries.js"></script>
     <script type="text/javascript" src="scripts/lode.js"></script>
-    
-    <!-- 
-    	TODO: The special in-line style applied to Logo.svg (to fix black-on-black) should be moved to a local .css
-     -->
+
 </head>
-
+<!-- Navigation bar code -->
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-	   <a target="_blank" href="https://knetminer.org"><img style = "background-color:white; padding:3px;" class="logo-top" style = "background-color:white; padding:3px;" src="https://knetminer.com/wp-content/themes/celerart/img/Logo.svg" height="48" alt="Logo"></a>   
-       <ul class="nav navbar-nav" id="top">
-          <li>
-		    <a target="_blank" href="https://pub.uni-bielefeld.de/publication/2915227">Cite Us</a>
-            <a target="_blank" href="http://knetminer.rothamsted.ac.uk/KnetMiner/KnetMiner_Tutorial-v3.1.pdf">User Guide</a>
-		  </li>
-    </ul>
- 	</nav>  <!-- end navbar -->
- 
-	<div id="content">
-	    <h1>KnetMiner SPARQL endpoint</h1>
-	    
-	    <h2>TL;DR</h2>
-	    <p>Enter the KnetMiner <a href="./sparql">SPARQL endpoint</a>!</p>
-	    
-	    <p>Some of the datasets available from SPARQL are also accessible from <a href = "https://neo4j.com">Neo4j</a> 
-	    endpoints:
-	    
-	    <ul>
-	    	<li><a href="http://knetminer-wheat.cyverseuk.org:7474">Poaceae</a> (ie, a set of gramineae, including wheat, plus
-	    	Arabidopsis). For programmatic access: <code>bolt://knetminer-neo4j.cyverseuk.org:7687</code> (no user/password needed).</li>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <a target="_blank" href="https://knetminer.com"><img style="background-color:#121212; padding:2px;"
+                class="logo-top" style="background-color:white; padding:3px;" src="images/KnetMinerLogo.svg" height="48"
+                alt="Logo"></a>
+        <ul class="nav navbar-nav" id="top">
+            <li>
+                <a target="_blank" href="https://knetminer.com/knetminer-citation/how-to-cite.html">Cite Us</a>
+                <a target="_blank" href="https://knetminer.com/tutorial">User Guide</a>
+            </li>
+        </ul>
+    </nav> 
+    <!-- end navbar -->
+    </body>
 
-	    	<li><a href = "http://knetminer-covid19.cyverseuk.org:7476/browser/">COVID-19</a> dataset, which we have started
-	    	developing during the <a href = "https://github.com/virtual-biohackathons/covid-19-bh20">CoViD-19 Bio-hackathon</a>
-	    	in 2020. Details <a href = "https://github.com/Rothamsted/covid19-kg/blob/master/RawDataEndPoints.md">here</a>.
-	    	For programmatic access: <code>bolt://knetminer-neo4j.cyverseuk.org:7689</code> (no user/password needed).</li>
-	    </ul>
-	    </p> 
-	    
-	    
-	    
-	    <h2>What is it?</h2>
-	    
-	    <p>This is the SPARQL endpoint for the knowledge graphs that powers 
-	    <a href = "https://knetminer.rothamsted.ac.uk">KnetMiner</a>. KnetMiner is an application to explore knowledge 
-	    graph for candidate gene discovery. Our group uses it to provide access to plant biology information, as well 
-	    as to support other organisms.</p>
-	    
-	    <p>The data endpoints offer machine-readable access to the same data that we use for the KnetMiner application, this
-	    offers the opportunity for a wider use of the data, for instance, to do Excel exports or to run analyses by means
-	    of your own Python scripts.</p>
-	    
-	    
-	    
-	    <h2>Want to know more?</h2>
+    <!-- Image banner -->
+    <div class="banner">
+        <img src="images/titleImage.svg" alt="Banner Image">
+      </div>
 
-	    <p>The endpoints are based on data standards and <a href = "https://www.go-fair.org/fair-principles/">FAIR data principles</a>. 
-	    The data are modelled after our <a href="https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>. We are also 
-	    in the process of defining a more extended <a href="https://github.com/Rothamsted/agri-schemas">AgriSchemas</a> 
-	    and some prototype examples are included here.</p> 
-	    
-	    <p>More details are available from:
-	    
-	    <ul>
-	    	<li><a href="https://dx.doi.org/10.1515%2Fjib-2018-0023">IB2018 paper</a>.</li>
-	    	<li>Our introductions on the 
-	    	<a href = "https://knetminer.com/cases/the-power-of-standardised-and-fair-knowledge-graphs.html">KnetMiner Blog</a> 
-	    	and on the <a href = "https://designingfuturewheat.org.uk/dfw-and-fair-agriculture-data-the-knetminer-experience/">DFW blog</a>.</li>
-	    	<li><a href = "https://github.com/Rothamsted/rdf2pg">rdf2pg</a>, the tool we have developed to keep RDF data 
-	    	and Neo4j aligned under the same model.</li>
-	    </ul> 
-	    </p>
-	    
-	    
-	    <h2>Acknowledgements</h2>
-	   	
-	   	<p>
-	   	<ul>
-	   	<li>Our data endpoints runs on <a href="https://cyverseuk.org/">Cyverse UK</a> resources, kindly provided by the 
-	    <a href="https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.</li>
-	    
-	    <li>The hereby SPARQL browser is based on the EBI's <a href="http://ebispot.github.io/lodestar/">LODEStar tool</a>,
-	    which runs on top of Virtuoso.</li>
-	    
-	    <li>We are funded by the UK BBSRC <a href = "https://designingfuturewheat.org.uk">Designing Future Wheat</a> (DFW) 
-	    project.</li>
-	    
-	    </ul>
-			</p>
-	</div>
+<!-- Container boxes for separating important from the less important -->
+<div class="container">
+    <div class="green-box">
 
-  <div class="contact-footer" style="position:fixed;bottom:0;">
-	      <ul style="overflow:hidden;margin-bottom: 0px;">
-		     <li class="left-footer">
-			   <a target="_blank" title="Rothamsted Research" href="http://www.rothamsted.ac.uk/" class="logos"><img src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/rothamsted_logo.png" width="80" height="80"></a>
-			   <a target="_blank" title="BBSRC" href="http://www.bbsrc.ac.uk/" class="logos"><img class="bbsrc-logo" src="https://knetminer.rothamsted.ac.uk/KnetMaps/image/bbsrc_logo.png"></a>
-			 </li>
-		     <li class="center-footer">
-			   <a target="_blank" title="KnetMiner" href="https://knetminer.org" class="logos"><img style = "background-color:white; padding:3px;" src="https://knetminer.com/wp-content/themes/celerart/img/Logo.svg" height="90"></a>
-			 </li>
-		      <li class="right-footer">
-			   <ul class="nav navbar-nav" id="bottom">
-			     <li>
-           <a target="_blank" title="Cyverse" href="https://cyverseuk.org/" class="logos"><img src="images/cyverse-logo.png" width=270></a>
-           </li>
-			   </ul>
-			 </li>
-		  </ul>
-	</div>
-</body>
+<!-- First paragraph -->
+    <div class="very-light-green-box">
+        <p><h3>Programmatic access for developers and data scientists to our FAIR knowledge graphs using Cypher and Sparql graph
+            query languages. Run your own analytics or use our APIs to enrich your application with KnetMiner data.</h3></p>
+    </div>
+
+    <!-- Sparql endpoint and link -->
+    <div class="light-green-box">
+        <h2>KnetGraph SPARQL endpoint:</h2>
+        <ul>
+        <p><li>Available <a href="./sparql">here</a>.</p></li>
+        </ul>
+    </div>
+
+    <!-- neo4j endpoints -->
+    <div class="light-green-box">
+        <p><h2>KnetGraph Neo4j endpoints:</p></h2>
+        <p>
+        <ul>
+            <li><a href="http://knetminer-wheat.cyverseuk.org:7474">Poaceae</a>.
+                For programmatic access: <code><b>bolt://knetminer-neo4j.cyverseuk.org:7687</b></code> (no
+                user/password needed - dataset includes Wheat and Arabidopsis).
+            </li>
+
+            <li><a href="http://knetminer-covid19.cyverseuk.org:7476/browser/">COVID-19</a>. 
+                For programmatic access: <code><b>bolt://knetminer-neo4j.cyverseuk.org:7689</b></code> (no user/password
+                needed - developed 
+                during the <a href="https://github.com/virtual-biohackathons/covid-19-bh20">COVID-19 Bio-hackathon</a>
+                in 2020. Details <a href="https://github.com/Rothamsted/covid19-kg/blob/master/RawDataEndPoints.md">here</a>).
+            </li>
+        </ul>
+        </p>
+    </div>
+    </div>
+    <!-- Moving to other box, with more info -->
+    <div class="very-light-green-box-padded">
+    <body>
+        <h2>What is it?</h2>
+        <ul>
+        <p>These are the KnetGraph endpoints for the knowledge graphs which power
+            <a href="https://knetminer.rothamsted.ac.uk">KnetMiner</a>. KnetMiner is an application to explore knowledge
+            graphs for candidate gene discovery. Our team uses KnetGraphs in KnetMiner to provide access to information in plant biology.
+        </p>
+
+        <p>The data endpoints offer machine-readable access to the same data that we use for the KnetMiner application,
+            this offers the opportunity for a wider use of the data, for instance, to do Excel exports or to run analyses by
+            means of your own Python scripts.</p>
+        </ul>
+        <h2>Want to know more?</h2>
+        <ul>
+        <p>The endpoints are based on data standards and <a href="https://www.go-fair.org/fair-principles/">FAIR data
+                principles</a>.
+            The data are modelled after our <a href="https://github.com/Rothamsted/bioknet-onto">BioKNOW ontology</a>.
+            We
+            are also
+            in the process of defining a more extended <a href="https://github.com/Rothamsted/agri-schemas">AgriSchemas</a>
+            and some prototype examples are included here.</p>
+        
+        <p>More details are available from:
+        </ul>
+        <ul>
+            <li><a href="https://dx.doi.org/10.1515%2Fjib-2018-0023">Towards FAIRer Biological Knowledge Networks Using a Hybrid Linked Data and Graph Database Approach</a></li>
+            
+            <li>Our introductions on the <a href="https://knetminer.com/cases/the-power-of-standardised-and-fair-knowledge-graphs.html">KnetMiner
+                    Blog</a> and on the <a href="https://designingfuturewheat.org.uk/dfw-and-fair-agriculture-data-the-knetminer-experience/">DFW blog</a>.
+            </li>
+            
+            <li>A tool we have developed to keep RDF data and Neo4j aligned under the same model: <a href="https://github.com/Rothamsted/rdf2pg">rdf2pg</a>.</li>
+            
+                <li>A <a href="https://github.com/Rothamsted/knetgraphs-gene-traits">student project led by Menna Shehata</a>, which uses our SPARQL endpoint to find significant traits associated 
+                to genes of interest, by means of a gene set enrichment analysis approach (GSEA), which leverage the flexibility 
+                and power of standardised knowledge graphs.
+            </li>
+        </ul>
+        </p>
+
+        <h2>Acknowledgements</h2>
+
+        <p>
+        <ul>
+            <li>Our data endpoints runs on <a href="https://cyverseuk.org/">Cyverse UK</a> resources, kindly provided by
+                the
+                <a href="https://www.earlham.ac.uk/davey-group">Robert Davey's group at the Earlham institute</a>.
+            </li>
+
+            <li>The hereby SPARQL browser is based on the EBI's <a href="http://ebispot.github.io/lodestar/">LODEStar
+                    tool</a>,
+                which runs on top of Virtuoso.</li>
+
+            <li>We are funded by the UK BBSRC <a href="https://designingfuturewheat.org.uk">Designing Future Wheat</a>
+                (DFW)
+                project.</li>
+
+        </ul>
+        </p>
+        <!-- Arne: new license terms 02/08/23-->
+        <h2>License Terms</h2>
+        <p>
+        <ul>
+            This work is licensed under the <a
+                href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial 4.0 International (CC
+                BY-NC
+                4.0)</a> license, which allows for non-commercial use and requires attribution to the original author.
+            Contact us on <b>hello@knetminer.com</b> to learn more.
+        </ul>
+        </p>
+        </div>
+
+    </body>
+</div>
 </html>

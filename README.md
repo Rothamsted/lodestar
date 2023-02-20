@@ -1,7 +1,6 @@
 # Linked Data Browser at Knetminer/Data
 
-***This branch is to manage a LODEStar version of [Knetminer Data Site](https://knetminer.org/data). 
-You find more explanations on that web site. The original LODEStar text follows below.***
+*This branch is to manage a LODEStar version of [Knetminer Data Site](https://knetminer.org/data). You find more explanations on that web site. The original LODEStar text follows below.*
 
 # Lodestar
 
