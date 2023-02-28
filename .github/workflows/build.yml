@@ -2,6 +2,7 @@ name: Standard Build
 
 on:
   push:
+  
   workflow_dispatch:
     inputs:
       # These can be set when the build is invoked manually, from GH Actions.
@@ -15,7 +16,7 @@ on:
       NEW_SNAPSHOT_VER:
         description: "New Snapshot Version"
         required: false
-    
+
 jobs:
   build:
 

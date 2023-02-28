@@ -57,7 +57,7 @@ span.pagmes {
 #lodestar-sparql-form {
     font-size: 100%;
     font-family: Helvetica,sans-serif;
-    color: rgb(255, 255, 255);
+    color: black;
 }
 
 #lodestar-sparql-form fieldset{
