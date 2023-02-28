@@ -31,3 +31,28 @@
     max-width: 96%;
   }
   
+  .navbar {
+    
+    display:block;
+    height:54px;
+    -webkit-box-shadow: rgb(99 97 97 / 45%) 0px 25px 20px -20px;
+    box-shadow: rgb(99 97 97 / 45%) 0px 25px 20px -20px;    background-color:#ffffff/*#2A2A2A*/;
+    margin-bottom:40px;
+    width:100%;
+    
+    }
+    ul.nav {
+    float:right;
+    list-style:none;
+    }
+    ul {
+    font-size:19px;
+    }
+    .nav a {
+      color: #6F7F8F;
+      text-decoration: none;
+      padding-right: 30px;
+      }
+    .nav a:hover{
+      color:#51CE7B;
+      }
