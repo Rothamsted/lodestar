@@ -1,7 +1,7 @@
 # Revision History
 
 ## 2.0.1-SNAPSHOT
-* Current snapshot.
+* Minor improvements to the splash page text and layout.
 
 ## 2.0-KNM
 * The *-KNM versions are the Knetminer fork, with Knetminer-specific customisations, done to support our [data access endpoint][10].
