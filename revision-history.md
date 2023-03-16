@@ -1,6 +1,11 @@
 # Revision History
 
-## 2.0.1-SNAPSHOT
+*This file was last reviewed on 2023-02-16.* **Please, keep this note updated.**
+
+## 2.0.2-SNAPSHOT
+* Current snapshot
+
+## 2.0.1-KNM
 * Minor improvements to the splash page text and layout.
 
 ## 2.0-KNM
