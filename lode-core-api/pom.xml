@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20220320</version>
+            <version>20230618</version>
         </dependency>
 
         <!-- Override Jena dependencies on versions of httpclient and jackson with CVEs -->
