@@ -19,9 +19,11 @@
 <!--[if gt IE 8] > <html  class="no-js" lang="en"> <! --<![endif]-->
 
 <head>
-    <title>SPARQL Explorer</title>
+    <title>Resource Description</title>
+    <link rel="shortcut icon" href="images/favicon.ico"></link>
     <link rel="stylesheet" type="text/css" href="css/lode-style.css" />
     <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
+    <link href="css/knetgraph.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="codemirror/codemirror.js"></script>
     <script type="text/javascript" src="codemirror/sparql.js"></script>
@@ -29,6 +31,27 @@
     <script type="text/javascript" src="scripts/queries.js"></script>
     <script type="text/javascript" src="scripts/lode.js"></script>
 </head>
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <a target="_blank" href="https://knetminer.com"><img style="padding:9px;"
+          class="logo-top" style="background-color:white; padding:0px;" src="images/KnetMinerLogoBlack.svg" height="35"
+          alt="Logo"></a>
+  <ul class="nav navbar-nav" id="top">
+      <li>
+          <a target="_blank" href="http://knetminer-data.cyverseuk.org/lodestar/">KnetGraph Home</a>
+          <a target="_blank" href="https://knetminer.com/knetminer-citation/how-to-cite.html">Cite Us</a>
+          <a target="_blank" href="https://knetminer.com/tutorial">User Guide</a>
+      </li>
+  </ul>
+</nav>
+<!-- end navbar -->
+
+<!-- Image banner -->
+<div class="banner_explore">
+  <img src="images/titleImageDescription.svg" alt="Banner Image">
+  </div>
+<!-- end Image banner -->
 
 <body onload="$('#data-explorer-content').explore({namespaces : lodeNamespacePrefixes});">
 <div class="grid_24" id="data-explorer-content">

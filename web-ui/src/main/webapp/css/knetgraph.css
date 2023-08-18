@@ -1,12 +1,12 @@
-  .very-light-green-box {
-    background-color: #e5f8eb;
-    width: 99%;
-    padding: 10px;
-    margin: 10px auto;
-  }
   .very-light-green-box-padded {
     background-color: #e5f8eb;
     width: 95%;
+    padding: 10px;
+    margin: 10px auto;
+  }
+  .very-light-green-box {
+    background-color: #e5f8eb;
+    width: 99%;
     padding: 10px;
     margin: 10px auto;
   }
@@ -27,32 +27,163 @@
     align-items: center;
     justify-content: center;
   }
+  .banner_explore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+  }
   img {
     max-width: 96%;
   }
   
   .navbar {
-    
-    display:block;
-    height:54px;
+    display: flex;
+    align-items: center !important; /* This will vertically center items */
+    justify-content: space-between; /* This will keep logo to the left and links to the right */
+    height: 54px;
     -webkit-box-shadow: rgb(99 97 97 / 45%) 0px 25px 20px -20px;
-    box-shadow: rgb(99 97 97 / 45%) 0px 25px 20px -20px;    background-color:#ffffff/*#2A2A2A*/;
-    margin-bottom:40px;
-    width:100%;
-    
-    }
-    ul.nav {
-    float:right;
-    list-style:none;
-    }
-    ul {
-    font-size:19px;
-    }
-    .nav a {
-      color: #6F7F8F;
-      text-decoration: none;
-      padding-right: 30px;
-      }
-    .nav a:hover{
-      color:#51CE7B;
-      }
+    box-shadow: rgb(99 97 97 / 45%) 0px 25px 20px -20px;
+    background-color: #ffffff;
+    margin-bottom: 40px;
+    width: 100%;
+    padding: 0 20px; /* Added some padding to give some space on the sides */
+}
+
+ul.nav {
+    display: flex; /* This makes the list items line up horizontally */
+    list-style: none;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+ul {
+    font-size: 19px;
+    font-family: 'Nexa'; /* Set font-family for ul */
+}
+
+.nav a {
+    color: #6F7F8F;
+    text-decoration: none;
+    padding-right: 30px;
+}
+
+.nav a:hover {
+    color: #51CE7B;
+}
+
+.navbar img.logo-top {
+    max-width: 168px;
+    height: auto;
+}
+.logo-top {
+  vertical-align: middle;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+/* Base Button Style submit query */
+.lode-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  border: 2px solid rgb(81,206,123);
+  background-color: rgb(81,206,123);
+  color: #fff;
+  margin-right: 10px; /* spacing between buttons */
+}
+
+/* Hover State */
+.lode-button:hover {
+  background-color: rgb(28, 147, 68);
+}
+
+/* Active State */
+.lode-button:active {
+  transform: scale(0.98);
+}
+
+/* Adding a shadow */
+.lode-button {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+/* Base Button Style reset */
+.lode-button-reset {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  border: 2px solid #F34A4A;
+  background-color: #F34A4A;
+  color: #fff;
+  margin-right: 10px; /* spacing between buttons */
+}
+
+/* Hover State */
+.lode-button-reset:hover {
+  background-color: #741c1c;
+}
+
+/* Active State */
+.lode-button-reset:active {
+  transform: scale(0.98);
+}
+
+/* Adding a shadow */
+.lode-button-reset {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+#data-explorer-content.grid_24 {
+  width: 100%;
+  float: none;
+}
+/*Data explorer (describe html) padding along sides */
+#data-explorer-content {
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20px; 
+}
+#data-explorer-content h3 {
+  color: rgb(81,206,123);
+}
+#limit, #render {
+  width: 150px;
+}
+.dropdown-container {
+  display: flex;
+  align-items: left;  
+}
+.dropdown-container > p {
+  margin: 0;  
+  padding: 0 10px;
+}
+/* Scrollbar For Webkit browsers like Chrome, Safari */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 10px; /* Round corners of the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the thumb */
+  border-radius: 10px; /* Round corners of the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the thumb when hovered */
+}
