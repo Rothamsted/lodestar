@@ -2,9 +2,9 @@
 
 .CodeMirror {
   /* height of the sparql query container */
-  font-family: 'Nexa';
   height: 350px;
   color: black;
+  font-family: 'Consolas', 'Monaco', 'Lucida Console', 'Courier New', monospace;
 }
 
 /* PADDING */
