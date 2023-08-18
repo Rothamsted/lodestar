@@ -14,7 +14,7 @@ var activateQueryHistory=false;
 
 var exampleQueries = [
 	{
-		category: "Knetminer",
+		category: "KnetMiner",
 		queries: [
 			{
 				shortname: "Find genes involved in oxygenic photosynthesis pathway",
@@ -158,7 +158,7 @@ var exampleQueries = [
 	
 	// ----------
 	{
-		category: "CoViD 19",
+		category: "COVID-19",
 		queries: [
 			{
 				shortname: "Drugs occurring in known publications",

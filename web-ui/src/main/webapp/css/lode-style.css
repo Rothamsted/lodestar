@@ -56,7 +56,7 @@ span.pagmes {
 
 #lodestar-sparql-form {
     font-size: 100%;
-    font-family: Helvetica,sans-serif;
+    font-family: 'Nexa';
     color: black;
 }
 
@@ -69,10 +69,21 @@ span.pagmes {
 }
 
 .lodestar-grid12 {
-    width: 49.0%;
+    width: 75%; 
     display: inline;
     float: left;
     position: relative;
-
+    margin-right: 10px;
 }
 
+#example_queries {
+    width: 20%; 
+    display: inline;
+    float: left;
+    position: relative;
+}
+
+
+ul {
+    font-family: 'Nexa';
+}

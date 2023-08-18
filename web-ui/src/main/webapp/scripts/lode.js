@@ -232,7 +232,7 @@ function _buildExplorerPage(element) {
     renderDepiction($("#" + resourceDepiction));
 
     var topObjects =  id + '_resourceTopObject';
-    $(topObjectsDiv).append('<div style=\'max-width:700px;\' id="' + topObjects + '"/>');
+    $(topObjectsDiv).append('<div style=\'max-width:4000px;\' id="' + topObjects + '"/>');
     renderShortDescription($("#" + topObjects));
 
     var resourceType =  id + '_resourceType';
@@ -303,8 +303,23 @@ function _buildSparqlPage(element) {
         $("<p></p>").append(
             myTextArea));
 
+    var dropdownContainer = $("<div class='dropdown-container'></div>");
 
-    section1.append(
+
+    dropdownContainer.append(
+        $("<p></p>").append(
+            $("<label for='limit'>Results per page: </label>"))
+            .append(
+            $("<select name='limit' id='limit'></select>")
+                .append("<option value='25' selected='selected'>25</option>")
+                .append("<option value'50'>50</option>")
+                .append("<option value'100'>100</option>")
+                .append("<option value'200'>200</option>")
+                .append("<option value'500'>500</option>")
+            )
+    );
+
+    dropdownContainer.append(
         $("<p style='float: right;'></p>").append(
             $("<label for='render'>Output: </label>"))
             .append(
@@ -319,6 +334,7 @@ function _buildSparqlPage(element) {
                 .append('<option value="JSON-LD">JSON-LD</option>')
         )
     );
+    section1.append(dropdownContainer);
 
     if (lodestarRdfsInference) {
         section1.append(
@@ -330,16 +346,7 @@ function _buildSparqlPage(element) {
         );
     }
 
-    section1.append(
-        $("<p></p>").append(
-            $("<label for='limit'>Results per page: </label>"))
-            .append(
-            $("<select name='limit' id='limit'></select>")
-                .append("<option value='25' selected='selected'>25</option>")
-                .append("<option value'50'>50</option>")
-                .append("<option value'100'>100</option>")
-            )
-    );
+
 
     /*
     section1.append(
@@ -354,10 +361,10 @@ function _buildSparqlPage(element) {
 
 
     section1.append(
-        $("<p></p>").append("<input type='button' class='submit ui-button ui-widget ui-corner-all' style='display: inline;'  onclick='submitQuery()' value='Submit Query' />&nbsp;")
-                    .append("<input type='button' class='submit  ui-button ui-widget ui-corner-all' style='display: inline;' onclick='reloadPage()' value='Reset' />")
-
-    );
+        $("<p></p>").append("<input type='button' class='lode-button-reset' onclick='reloadPage()' value='Reset' />")
+                    .append("<input type='button' class='lode-button' onclick='submitQuery()' value='Submit Query' />")
+                    
+    );    
 
     section1.append("<div id='query-executing-spinner'>" +
         "Executing query...&nbsp;<img src='images/loadingAnimation.gif'>" +
@@ -365,7 +372,7 @@ function _buildSparqlPage(element) {
 
     //Building the Example Query section
     section2.append(
-        $("<p></p>").append("<h3>Example Queries</h3>")
+        $("<p></p>").append("<h3>Example Queries:</h3>")
     )
 
     section2.append(

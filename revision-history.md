@@ -1,5 +1,33 @@
 # Revision History
 
+## 3.0.0 - Visual Overhaul (08/2023)
+Visual overhaul to Index, Explorer and Resource description pages
+
+### Home page & general
+* Updated README to include 'Testing Locally' section for developers
+* Added new banners to all pages
+* Updated fonts throughout to use Nexa, the KnetMiner standard
+* Added navbar to all main HTML pages
+* Updated license terms
+* Updated all URLs on index
+* Modernised scrollbars
+* Improved tab/page titles
+* Added Favicon to all major HTML pages
+
+### Explorer page
+* Widened Explorer's Query box (reducing sample query space)
+* Lengthened Explorer's Query box by 50px
+* Reduced width of Results per page selector - moved it in line with Output dropdown
+* Added 200 & 500 to Results per page selector
+* Modernised buttons, added color
+* Added increased padding around page
+
+### Resource Description page
+* Widened About paragraph to have wider maxwidth
+* Updated H2 color to be KnetMiner green
+* Improved padding on outer edges
+
+
 ## 2.0.1-SNAPSHOT
 * Current snapshot.
 

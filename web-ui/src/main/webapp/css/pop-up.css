@@ -32,7 +32,7 @@
 .popup h2 {
   margin-top: 0;
   color: #333;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: 'Nexa';
 }
 .popup .close {
   position: absolute;
@@ -53,4 +53,7 @@
   .popup{
     width: 80%;
   }
+}
+ul {
+  font-family: 'Nexa';
 }
