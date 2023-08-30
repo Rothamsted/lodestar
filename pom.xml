@@ -21,7 +21,7 @@
     <groupId>ebi-lode</groupId>
     <artifactId>ebi-lode</artifactId>
     <packaging>pom</packaging>
-    <version>2.0.2-SNAPSHOT</version>
+    <version>3.0-KNM</version>
     <modules>
         <module>lode-core-api</module>
         <module>web-ui</module>
