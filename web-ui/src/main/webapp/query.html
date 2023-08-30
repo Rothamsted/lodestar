@@ -1,12 +1,15 @@
-
 <?xml version="1.0" encoding="utf-8"?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>SPARQL Explorer</title>
+    <link rel="shortcut icon" href="images/favicon.ico"></link>
+    <link href="https://knetminer.rothamsted.ac.uk/KnetMaps/css_demo/index-style.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/lode-style.css" />
     <link rel="stylesheet" type="text/css" href="codemirror/codemirror.css" />
     <link rel="stylesheet" type="text/css" href="css/foundation.min.css"/>
+    <link href="css/knetgraph.css" rel="stylesheet">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="codemirror/codemirror.js"></script>
     <script type="text/javascript" src="codemirror/sparql.js"></script>
@@ -17,12 +20,30 @@
     <script type="text/javascript" src="scripts/queries.js"></script>
     <script type="text/javascript" src="scripts/lode.js"></script>
 </head>
-
 <body onload="$('#sparql-content').sparql({namespaces : lodeNamespacePrefixes});">
+
+<!-- Navigation bar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <a target="_blank" href="https://knetminer.com"><img style="padding:9px;"
+            class="logo-top" style="background-color:white; padding:0px;" src="images/KnetMinerLogoBlack.svg" height="35"
+            alt="Logo"></a>
+    <ul class="nav navbar-nav" id="top">
+        <li>
+            <a target="_blank" href="http://knetminer-data.cyverseuk.org/lodestar/">KnetGraph Home</a>
+            <a target="_blank" href="https://knetminer.com/knetminer-citation/how-to-cite.html">Cite Us</a>
+            <a target="_blank" href="https://knetminer.com/tutorial">User Guide</a>
+        </li>
+    </ul>
+</nav>
+<!-- end navbar -->
+
+<!-- Image banner -->
+<div class="banner">
+    <img src="images/titleImageExplorer.svg" alt="Banner Image">
+    </div>
+<!-- end Image banner -->
 
 <div class="grid_24" id="sparql-content">
 </div>
-
 </body>
-
 </html>
